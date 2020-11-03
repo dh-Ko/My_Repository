@@ -42,6 +42,9 @@
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTestCmd1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTestCmd2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuTestCmd3 = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -52,9 +55,8 @@
             this.stComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.tbSql = new System.Windows.Forms.TextBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.mnuTestCmd2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTestCmd3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuDBUpdate = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.PopupMenu1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
@@ -77,26 +79,29 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(636, 208);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dataGridView1_CellBeginEdit);
             // 
             // PopupMenu1
             // 
             this.PopupMenu1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuAddColumn,
-            this.mnuAddRow});
+            this.mnuAddRow,
+            this.toolStripMenuItem3,
+            this.mnuDBUpdate});
             this.PopupMenu1.Name = "PopupMenu1";
-            this.PopupMenu1.Size = new System.Drawing.Size(146, 48);
+            this.PopupMenu1.Size = new System.Drawing.Size(181, 98);
             // 
             // mnuAddColumn
             // 
             this.mnuAddColumn.Name = "mnuAddColumn";
-            this.mnuAddColumn.Size = new System.Drawing.Size(145, 22);
+            this.mnuAddColumn.Size = new System.Drawing.Size(180, 22);
             this.mnuAddColumn.Text = "Column 추가";
             this.mnuAddColumn.Click += new System.EventHandler(this.mnuAddColumn_Click);
             // 
             // mnuAddRow
             // 
             this.mnuAddRow.Name = "mnuAddRow";
-            this.mnuAddRow.Size = new System.Drawing.Size(145, 22);
+            this.mnuAddRow.Size = new System.Drawing.Size(180, 22);
             this.mnuAddRow.Text = "Row 추가";
             this.mnuAddRow.Click += new System.EventHandler(this.mnuAddRow_Click);
             // 
@@ -167,6 +172,25 @@
             this.mnuTestCmd1.Size = new System.Drawing.Size(180, 22);
             this.mnuTestCmd1.Text = "Test 명령1";
             this.mnuTestCmd1.Click += new System.EventHandler(this.mnuTestCmd1_Click);
+            // 
+            // mnuTestCmd2
+            // 
+            this.mnuTestCmd2.Name = "mnuTestCmd2";
+            this.mnuTestCmd2.Size = new System.Drawing.Size(180, 22);
+            this.mnuTestCmd2.Text = "Test 명령2";
+            this.mnuTestCmd2.Click += new System.EventHandler(this.mnuTestCmd2_Click);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mnuTestCmd3
+            // 
+            this.mnuTestCmd3.Name = "mnuTestCmd3";
+            this.mnuTestCmd3.Size = new System.Drawing.Size(180, 22);
+            this.mnuTestCmd3.Text = "Test 명령3";
+            this.mnuTestCmd3.Click += new System.EventHandler(this.mnuTestCmd3_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -242,6 +266,7 @@
             this.tbSql.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSql.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSql.Location = new System.Drawing.Point(0, 0);
             this.tbSql.Multiline = true;
             this.tbSql.Name = "tbSql";
@@ -268,24 +293,17 @@
             this.splitContainer1.SplitterDistance = 166;
             this.splitContainer1.TabIndex = 7;
             // 
-            // mnuTestCmd2
+            // toolStripMenuItem3
             // 
-            this.mnuTestCmd2.Name = "mnuTestCmd2";
-            this.mnuTestCmd2.Size = new System.Drawing.Size(180, 22);
-            this.mnuTestCmd2.Text = "Test 명령2";
-            this.mnuTestCmd2.Click += new System.EventHandler(this.mnuTestCmd2_Click);
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
             // 
-            // mnuTestCmd3
+            // mnuDBUpdate
             // 
-            this.mnuTestCmd3.Name = "mnuTestCmd3";
-            this.mnuTestCmd3.Size = new System.Drawing.Size(180, 22);
-            this.mnuTestCmd3.Text = "Test 명령3";
-            this.mnuTestCmd3.Click += new System.EventHandler(this.mnuTestCmd3_Click);
-            // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.mnuDBUpdate.Name = "mnuDBUpdate";
+            this.mnuDBUpdate.Size = new System.Drawing.Size(180, 22);
+            this.mnuDBUpdate.Text = "DB Update";
+            this.mnuDBUpdate.Click += new System.EventHandler(this.mnuDBUpdate_Click);
             // 
             // Form1
             // 
@@ -340,6 +358,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuTestCmd2;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mnuTestCmd3;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem mnuDBUpdate;
     }
 }
 

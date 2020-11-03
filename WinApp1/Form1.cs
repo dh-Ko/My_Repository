@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -147,6 +148,37 @@ namespace WinApp1
         private void mnuTestCmd3_Click(object sender, EventArgs e)
         {
             RunSql("Select * from facility");
+            StatusLabel3.Text = "facility";
+        }
+
+        private void dataGridView1_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
+        {
+            int x = e.ColumnIndex;
+            int y = e.RowIndex;
+            dataGridView1.Rows[y].Cells[x].ToolTipText = ".";
+            string sHeader = dataGridView1.Columns[x].HeaderText;   // Field 명
+        }
+
+        private void mnuDBUpdate_Click(object sender, EventArgs e)
+        {   //update [table_name] set [Field_name] = '[Cell_Value]' where [ID] = [ID_VALUE]
+            int i, j, k;
+            for(i=0; i < dataGridView1.RowCount; i++)   // Row indexing
+            {
+                for(j=0; j<dataGridView1.ColumnCount; j++)  // Column indexing
+                {
+                    if(dataGridView1.Rows[i].Cells[j].ToolTipText == ".")
+                    {
+                        string tn = StatusLabel3.Text;      // Table_Name
+                        string fn = dataGridView1.Columns[j].HeaderText;    // Field_Name
+                        string cv = dataGridView1.Rows[i].Cells[j].Value.ToString();    // Cell_Value
+                        string iv = dataGridView1.Columns[0].HeaderText;    // id_Field
+                        string jv = dataGridView1.Rows[i].Cells[0].Value.ToString();    // id_Value
+                        string Sql = $"update {tn} set {fn} = '{cv}' where {iv} = '{jv}'";
+                        RunSql(Sql);
+                        dataGridView1.Rows[i].Cells[j].ToolTipText = "";
+                    }
+                }
+            }
         }
     }
 }

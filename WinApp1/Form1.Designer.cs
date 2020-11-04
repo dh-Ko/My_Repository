@@ -34,6 +34,8 @@
             this.PopupMenu1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnuAddColumn = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuAddRow = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuDBUpdate = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuDBOpen = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,18 +51,17 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.StatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.stCombo1 = new System.Windows.Forms.ToolStripDropDownButton();
             this.StatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.StatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.StatusCombo = new System.Windows.Forms.ToolStripDropDownButton();
-            this.stComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.tbSql = new System.Windows.Forms.TextBox();
+            this.PopupMenu2 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnuExcuteSql = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuDBUpdate = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.PopupMenu1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.PopupMenu2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -89,21 +90,33 @@
             this.toolStripMenuItem3,
             this.mnuDBUpdate});
             this.PopupMenu1.Name = "PopupMenu1";
-            this.PopupMenu1.Size = new System.Drawing.Size(181, 98);
+            this.PopupMenu1.Size = new System.Drawing.Size(146, 76);
             // 
             // mnuAddColumn
             // 
             this.mnuAddColumn.Name = "mnuAddColumn";
-            this.mnuAddColumn.Size = new System.Drawing.Size(180, 22);
+            this.mnuAddColumn.Size = new System.Drawing.Size(145, 22);
             this.mnuAddColumn.Text = "Column 추가";
             this.mnuAddColumn.Click += new System.EventHandler(this.mnuAddColumn_Click);
             // 
             // mnuAddRow
             // 
             this.mnuAddRow.Name = "mnuAddRow";
-            this.mnuAddRow.Size = new System.Drawing.Size(180, 22);
+            this.mnuAddRow.Size = new System.Drawing.Size(145, 22);
             this.mnuAddRow.Text = "Row 추가";
             this.mnuAddRow.Click += new System.EventHandler(this.mnuAddRow_Click);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(142, 6);
+            // 
+            // mnuDBUpdate
+            // 
+            this.mnuDBUpdate.Name = "mnuDBUpdate";
+            this.mnuDBUpdate.Size = new System.Drawing.Size(145, 22);
+            this.mnuDBUpdate.Text = "DB Update";
+            this.mnuDBUpdate.Click += new System.EventHandler(this.mnuDBUpdate_Click);
             // 
             // menuStrip1
             // 
@@ -169,26 +182,26 @@
             // mnuTestCmd1
             // 
             this.mnuTestCmd1.Name = "mnuTestCmd1";
-            this.mnuTestCmd1.Size = new System.Drawing.Size(180, 22);
+            this.mnuTestCmd1.Size = new System.Drawing.Size(130, 22);
             this.mnuTestCmd1.Text = "Test 명령1";
             this.mnuTestCmd1.Click += new System.EventHandler(this.mnuTestCmd1_Click);
             // 
             // mnuTestCmd2
             // 
             this.mnuTestCmd2.Name = "mnuTestCmd2";
-            this.mnuTestCmd2.Size = new System.Drawing.Size(180, 22);
+            this.mnuTestCmd2.Size = new System.Drawing.Size(130, 22);
             this.mnuTestCmd2.Text = "Test 명령2";
             this.mnuTestCmd2.Click += new System.EventHandler(this.mnuTestCmd2_Click);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(127, 6);
             // 
             // mnuTestCmd3
             // 
             this.mnuTestCmd3.Name = "mnuTestCmd3";
-            this.mnuTestCmd3.Size = new System.Drawing.Size(180, 22);
+            this.mnuTestCmd3.Size = new System.Drawing.Size(130, 22);
             this.mnuTestCmd3.Text = "Test 명령3";
             this.mnuTestCmd3.Click += new System.EventHandler(this.mnuTestCmd3_Click);
             // 
@@ -206,9 +219,8 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.StatusLabel1,
-            this.StatusLabel2,
-            this.StatusLabel3,
-            this.StatusCombo});
+            this.stCombo1,
+            this.StatusLabel2});
             this.statusStrip1.Location = new System.Drawing.Point(0, 420);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(662, 24);
@@ -222,8 +234,18 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.StatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.StatusLabel1.Name = "StatusLabel1";
-            this.StatusLabel1.Size = new System.Drawing.Size(125, 19);
-            this.StatusLabel1.Text = "toolStripStatusLabel1";
+            this.StatusLabel1.Size = new System.Drawing.Size(106, 19);
+            this.StatusLabel1.Text = "SQL Database file";
+            // 
+            // stCombo1
+            // 
+            this.stCombo1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.stCombo1.Image = ((System.Drawing.Image)(resources.GetObject("stCombo1.Image")));
+            this.stCombo1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.stCombo1.Name = "stCombo1";
+            this.stCombo1.Size = new System.Drawing.Size(62, 22);
+            this.stCombo1.Text = "Tables...";
+            this.stCombo1.DropDownItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.stCombo1_DropDownItemClicked);
             // 
             // StatusLabel2
             // 
@@ -232,46 +254,37 @@
             | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
             this.StatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
             this.StatusLabel2.Name = "StatusLabel2";
-            this.StatusLabel2.Size = new System.Drawing.Size(125, 19);
-            this.StatusLabel2.Text = "toolStripStatusLabel2";
-            // 
-            // StatusLabel3
-            // 
-            this.StatusLabel3.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.StatusLabel3.BorderStyle = System.Windows.Forms.Border3DStyle.Sunken;
-            this.StatusLabel3.Name = "StatusLabel3";
-            this.StatusLabel3.Size = new System.Drawing.Size(125, 19);
-            this.StatusLabel3.Text = "toolStripStatusLabel3";
-            // 
-            // StatusCombo
-            // 
-            this.StatusCombo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.StatusCombo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.stComboBox1});
-            this.StatusCombo.Image = ((System.Drawing.Image)(resources.GetObject("StatusCombo.Image")));
-            this.StatusCombo.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.StatusCombo.Name = "StatusCombo";
-            this.StatusCombo.Size = new System.Drawing.Size(59, 22);
-            this.StatusCombo.Text = "Fields...";
-            // 
-            // stComboBox1
-            // 
-            this.stComboBox1.Name = "stComboBox1";
-            this.stComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.StatusLabel2.Size = new System.Drawing.Size(83, 19);
+            this.StatusLabel2.Text = "SQL Message";
             // 
             // tbSql
             // 
             this.tbSql.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbSql.ContextMenuStrip = this.PopupMenu2;
             this.tbSql.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbSql.Location = new System.Drawing.Point(0, 0);
             this.tbSql.Multiline = true;
             this.tbSql.Name = "tbSql";
+            this.tbSql.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.tbSql.Size = new System.Drawing.Size(636, 166);
             this.tbSql.TabIndex = 6;
+            this.tbSql.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbSql_KeyPress);
+            // 
+            // PopupMenu2
+            // 
+            this.PopupMenu2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuExcuteSql});
+            this.PopupMenu2.Name = "PopupMenu2";
+            this.PopupMenu2.Size = new System.Drawing.Size(137, 26);
+            // 
+            // mnuExcuteSql
+            // 
+            this.mnuExcuteSql.Name = "mnuExcuteSql";
+            this.mnuExcuteSql.Size = new System.Drawing.Size(136, 22);
+            this.mnuExcuteSql.Text = "SQL문 실행";
+            this.mnuExcuteSql.Click += new System.EventHandler(this.mnuExcuteSql_Click);
             // 
             // splitContainer1
             // 
@@ -293,18 +306,6 @@
             this.splitContainer1.SplitterDistance = 166;
             this.splitContainer1.TabIndex = 7;
             // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(177, 6);
-            // 
-            // mnuDBUpdate
-            // 
-            this.mnuDBUpdate.Name = "mnuDBUpdate";
-            this.mnuDBUpdate.Size = new System.Drawing.Size(180, 22);
-            this.mnuDBUpdate.Text = "DB Update";
-            this.mnuDBUpdate.Click += new System.EventHandler(this.mnuDBUpdate_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -322,6 +323,7 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.PopupMenu2.ResumeLayout(false);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
@@ -348,18 +350,18 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel StatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel StatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel StatusLabel3;
         private System.Windows.Forms.TextBox tbSql;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.ToolStripDropDownButton StatusCombo;
-        private System.Windows.Forms.ToolStripComboBox stComboBox1;
         private System.Windows.Forms.ToolStripMenuItem mnuTestCmd1;
         private System.Windows.Forms.ToolStripMenuItem mnuTestCmd2;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem mnuTestCmd3;
         private System.Windows.Forms.ToolStripSeparator toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuDBUpdate;
+        private System.Windows.Forms.ToolStripDropDownButton stCombo1;
+        private System.Windows.Forms.ToolStripStatusLabel StatusLabel2;
+        private System.Windows.Forms.ContextMenuStrip PopupMenu2;
+        private System.Windows.Forms.ToolStripMenuItem mnuExcuteSql;
     }
 }
 

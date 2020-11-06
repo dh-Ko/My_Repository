@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,23 +14,25 @@ namespace WinApp1
 {
     public partial class frmInput : Form
     {
-        public string sRet = "";
-        public frmInput()
+        public frmInput(string str = "", int x = 0, int y = 0)  // 초기값 설정
         {
             InitializeComponent();
+            label1.Text = str;
+            Location = new Point(x, y);
         }
+        public string sRet = "";
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == '\r') // [Enter]키 pressed / (13:0d)
+            if (e.KeyChar == '\r') // [Enter]키 pressed / (13:0d)
             {
                 sRet = textBox1.Text;
                 DialogResult = DialogResult.OK;
                 Close();
             }
-            else if (e.KeyChar == (char)Key.Escape) // [Enter]키 pressed / (13:0d)
+
+            else if (e.KeyChar == (char)Keys.Escape)
             {
-                sRet = textBox1.Text;
-                DialogResult = DialogResult.OK;
+                DialogResult = DialogResult.Cancel;
                 Close();
             }
         }

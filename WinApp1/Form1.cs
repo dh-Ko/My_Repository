@@ -26,7 +26,7 @@ namespace WinApp1
         
         private void mnuAddColumn_Click(object sender, EventArgs e)
         {
-            frmInput dlg = new frmInput();
+            frmInput dlg = new frmInput("Column Name");
             if (dlg.ShowDialog() == DialogResult.OK)
             {        
                 string str = dlg.sRet;
@@ -54,7 +54,6 @@ namespace WinApp1
                 {   // Database 연결문자열을 구성.
                     // openFileDialog1.FileName : 선택된 파일의 전체 경로
                     string[] sArr = sConString.Split(';'); // 4개의 Field 중 2번째 Field(AttachDbFilename) 수정 필요
-                    // string sConnStr = string.Format("{0};AttachDbFilename={1};{2};{3}", sArr[0], openFileDialog1.FileName, sArr[2], sArr[3]);
                     string sConnStr1 = $"{sArr[0]};AttachDbFilename={openFileDialog1.FileName};{sArr[1]};{sArr[2]};{sArr[3]}";
                     sConn.ConnectionString = sConnStr1;
                     sConn.Open();
@@ -64,14 +63,6 @@ namespace WinApp1
                     StatusLabel1.BackColor = Color.Green;
 
                     RefreshTable();
-                    //DataTable dt = sConn.GetSchema("Tables");
-                    //for (int i = 0; i < dt.Rows.Count; i++)
-                    //{
-                    //    string str = dt.Rows[i].ItemArray[2].ToString(); // 2번째 배열요소가 Table 이름
-                    //    //tbSql.Text += str + "\r\n";
-                    //    stCombo1.DropDownItems.Add(str);    //stComboBox1.Items.Add(str);
-                    //    //stCombo1.Text = str;
-                    //}
                 }
             }
             catch(Exception e1)
@@ -217,7 +208,7 @@ namespace WinApp1
                 string[] bStr = str.Split('\r');
                 string Result = bStr.Last().Trim(); // Trim : White Space 제거
                 string s1 = GetToken(0, Result, " ").ToLower();
-                if(s1 == "select" || s1 == "insert" || s1 == "update" || s1 == "delete" || s1 == "create" || s1 == "alter" || s1 == "drop")
+                if(s1 == "select" || s1 == "insert" || s1 == "update" || s1 == "create" || s1 == "alter")
                 {
                     RunSql(Result);
                 }
@@ -236,7 +227,7 @@ namespace WinApp1
             string sTable = stCombo1.Text;
             if(sTable == "")    // Table 명이 없으므로 새로운 Table 생성
             {   // create table [Table_Name] ([Col_Name] nchar(20), 
-                frmInput dlg = new frmInput();
+                frmInput dlg = new frmInput("");
                 dlg.ShowDialog();
                 sTable = dlg.sRet;
                 string sql = $"create table {sTable} (";
@@ -345,7 +336,7 @@ namespace WinApp1
                 dataGridView1.Rows.Clear();
                 dataGridView1.Columns.Clear();
 
-                StreamReader sr = new StreamReader(openFileDialog1.FileName);
+                StreamReader sr = new StreamReader(openFileDialog1.FileName, Encoding.Default);
                 string str = sr.ReadLine();     // 컬럼 정의 라인 Read
                 string[] sCols = str.Split(',');    // ','로 구분된 컬럼명을 문자열 배열로 분할
                 for(i=0; i< sCols.Length; i++)
@@ -376,11 +367,11 @@ namespace WinApp1
             {   // stream
                 int i, j;
 
-                StreamWriter sw = new StreamWriter(saveFileDialog1.FileName);
+                StreamWriter sw = new StreamWriter(saveFileDialog1.FileName, false,Encoding.Default);
                 string str = "";
                 for(i = 0; i < dataGridView1.ColumnCount; i++)
                 {
-                    str = dataGridView1.Columns[i].HeaderText;  // Header Line 작성
+                    str += dataGridView1.Columns[i].HeaderText;  // Header Line 작성
                     if(i < dataGridView1.ColumnCount - 1)
                     {
                         str += ",";
@@ -406,8 +397,3 @@ namespace WinApp1
         }
     }
 }
-/* 
- * inesrt into [Table_Name] values ('','',...)
- * create table [Table_Name]
- * delete [Table_Name] where [Col_Name] = [Col_value]
- */
